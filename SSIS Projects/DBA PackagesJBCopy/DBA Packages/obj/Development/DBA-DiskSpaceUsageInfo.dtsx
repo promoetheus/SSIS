@@ -1,0 +1,1247 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/17/2014 2:28:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UKDC1-PC-SIS01"
+  DTS:CreatorName="WORLDPAY\adm_johnc172"
+  DTS:DTSID="{84FB5424-A721-4D47-965A-E46D1196C8AB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.5026.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="DBA-DiskSpaceUsageInfo"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="200"
+  DTS:VersionGUID="{654095C2-1D0D-48A0-A096-1AF51D22E90B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DiskSpaceTxt]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{4509081D-3420-46FE-8B23-9D87695A7B50}"
+      DTS:ObjectName="DiskSpaceTxt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::VarFilePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowsToSkip="2"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="E:\MSSQL\Logs\DiskSpace.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="128"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{147C291F-7605-44E0-8F3D-0F00CABCC650}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="128"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Label"
+              DTS:DTSID="{0BB257DC-DB46-4222-9795-9876F9D81F7B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CapacityGB"
+              DTS:DTSID="{D6B5F42A-CDF6-4FB4-9950-9FA7F1FA642B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FreeSpaceGB"
+              DTS:DTSID="{12401125-2951-47B5-B69D-F88BDECDE264}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FreeSpacePCT"
+              DTS:DTSID="{DD52DB0D-18AD-4CFC-B9B4-54935BB9180E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{84A18740-1E8F-46AA-9AF6-C6A4B821552A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FilelistResultset">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B581714F-F483-4A34-AD57-E451B3811879}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsHCG">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3BF1F1D5-FD52-41DE-802D-B916F86472EF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\MSSQL\Logs\DiskSpace.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{09F64614-2F5B-4115-B60E-094D44ACBCB5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">UKDC1-PC-SQL21A.mgt.worldpay.local</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C504C0DF-79B7-479F-BFCC-933BD74FFDA4}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{6BC66A70-AB5E-48CB-86C3-492DD6643345}"
+        DTS:ObjectName="{6BC66A70-AB5E-48CB-86C3-492DD6643345}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::FilelistResultset" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Data Transfer"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{52088033-5CCA-4EEE-9B53-8F22B7287A2D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Transfer"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Data Transfer\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Name"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input].Columns[Label]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Label"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Label]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input].Columns[CapacityGB]"
+                          cachedDataType="numeric"
+                          cachedName="CapacityGB"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[CapacityGB]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input].Columns[FreeSpaceGB]"
+                          cachedDataType="numeric"
+                          cachedName="FreeSpaceGB"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpaceGB]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input].Columns[FreeSpacePCT]"
+                          cachedDataType="numeric"
+                          cachedName="FreeSpacePCT"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpacePCT]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="128"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Name]"
+                          name="Copy_Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Name]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="64"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Label]"
+                          name="Copy_Label"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Label]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_CapacityGB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_CapacityGB]"
+                          name="Copy_CapacityGB"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[CapacityGB]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpaceGB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpaceGB]"
+                          name="Copy_FreeSpaceGB"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpaceGB]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpacePCT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpacePCT]"
+                          name="Copy_FreeSpacePCT"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpacePCT]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Transfer\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Transfer\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Output].Columns[IsHCG_Derived]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Output].Columns[IsHCG_Derived]"
+                          name="IsHCG_Derived"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::IsHCG]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::IsHCG]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Transfer\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2057"
+                  name="Read from Txt file"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DiskSpaceTxt]"
+                      connectionManagerRefId="Package.ConnectionManagers[DiskSpaceTxt]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                          length="128"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[Label]"
+                          length="128"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[Label]"
+                          name="Label"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[CapacityGB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[CapacityGB]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[CapacityGB]"
+                          name="CapacityGB"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpaceGB]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[FreeSpaceGB]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpaceGB]"
+                          name="FreeSpaceGB"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpacePCT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[FreeSpacePCT]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].Columns[FreeSpacePCT]"
+                          name="FreeSpacePCT"
+                          precision="18"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="128"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[Label]"
+                          dataType="wstr"
+                          length="128"
+                          name="Label" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[CapacityGB]"
+                          dataType="numeric"
+                          name="CapacityGB"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[FreeSpaceGB]"
+                          dataType="numeric"
+                          name="FreeSpaceGB"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output].ExternalColumns[FreeSpacePCT]"
+                          dataType="numeric"
+                          name="FreeSpacePCT"
+                          precision="18"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="UKDC1-PM-SQS01A"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DBA_SpaceTable]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Connections[OleDbConnection]"
+                      connectionManagerID="{BC5785C4-CA60-4B17-883B-8FEBDC9C6E37}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Monitoring]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[Copy_Name]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Copy_Name"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[DiskName]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[Copy_Label]"
+                          cachedDataType="wstr"
+                          cachedLength="64"
+                          cachedName="Copy_Label"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[DiskLabel]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_Label]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[Copy_CapacityGB]"
+                          cachedDataType="numeric"
+                          cachedName="Copy_CapacityGB"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[CapacityGB]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_CapacityGB]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[Copy_FreeSpaceGB]"
+                          cachedDataType="numeric"
+                          cachedName="Copy_FreeSpaceGB"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[FreeSpaceGB]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpaceGB]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[Copy_FreeSpacePCT]"
+                          cachedDataType="numeric"
+                          cachedName="Copy_FreeSpacePCT"
+                          cachedPrecision="18"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[FreeSpacePercent]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output].Columns[Copy_FreeSpacePCT]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].Columns[IsHCG_Derived]"
+                          cachedDataType="bool"
+                          cachedName="IsHCG_Derived"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[IsHCG]"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Output].Columns[IsHCG_Derived]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[SpaceTableID]"
+                          dataType="i4"
+                          name="SpaceTableID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[DateTimeRun]"
+                          dataType="dbTimeStamp2"
+                          name="DateTimeRun"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[ServerName]"
+                          dataType="wstr"
+                          length="128"
+                          name="ServerName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[DiskName]"
+                          dataType="wstr"
+                          length="128"
+                          name="DiskName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[DiskLabel]"
+                          dataType="wstr"
+                          length="64"
+                          name="DiskLabel" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[CapacityGB]"
+                          dataType="r8"
+                          name="CapacityGB" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[FreeSpaceGB]"
+                          dataType="r8"
+                          name="FreeSpaceGB" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[FreeSpacePercent]"
+                          dataType="r8"
+                          name="FreeSpacePercent" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input].ExternalColumns[IsHCG]"
+                          dataType="bool"
+                          name="IsHCG" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Data Transfer.Paths[Data Conversion Output]"
+                  endId="Package\Foreach Loop Container\Data Transfer\Derived Column.Inputs[Derived Column Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Data Transfer.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\Data Transfer\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Data Transfer.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\Data Transfer\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\Data Transfer\Read from Txt file.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Run Powershell Script"
+          DTS:CreationName="Microsoft.ExecuteProcess"
+          DTS:Description="Run Powershell script to capture Disk Information for each server"
+          DTS:DTSID="{00A76237-7712-4A40-9605-0718E37A62A6}"
+          DTS:ExecutableType="Microsoft.ExecuteProcess"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Run Powershell Script"
+          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Arguments">".\\SpaceCheck.ps1 " + @[User::VarServerName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <ExecuteProcessData
+              Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+              RequireFullFileName="False"
+              Arguments=".\SpaceCheck.ps1 UKDC1-PC-SQL21A.mgt.worldpay.local"
+              WorkingDirectory="E:\MSSQL\Powershell"
+              WindowStyle="Hidden" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Update Server Name on Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DA4055FD-284F-4BE5-B582-0CF2698CBE30}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Server Name on Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BC5785C4-CA60-4B17-883B-8FEBDC9C6E37}"
+              SQLTask:SqlStatementSource="UPDATE dbo.DBA_SpaceTable&#xA;SET ServerName = ?&#xA;WHERE ServerName IS NULL&#xA;&#xA;&#xA;&#xA;UPDATE dbo.DBA_SpaceTable&#xA;SET DateTimeRun = getdate()&#xA;WHERE DateTimeRun IS NULL&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::VarServerName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="255" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0C80AC93-5893-4E7C-B126-2836B462EC42}"
+          DTS:From="Package\Foreach Loop Container\Data Transfer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Update Server Name on Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{DD40028F-FDF6-41D5-B952-4F0B28921F80}"
+          DTS:From="Package\Foreach Loop Container\Run Powershell Script"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Data Transfer" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{41B6463E-1D1D-442D-A823-61C28686E339}"
+          DTS:ObjectName="{41B6463E-1D1D-442D-A823-61C28686E339}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::VarServerName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{259BB722-C9BD-4664-9510-0B9ECEE9CB9F}"
+          DTS:ObjectName="{259BB722-C9BD-4664-9510-0B9ECEE9CB9F}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::IsHCG" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ReadFileInfo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Read Server File Information"
+      DTS:DTSID="{19F46082-B67C-418B-93D7-5C0D845EAE6E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ReadFileInfo"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BC5785C4-CA60-4B17-883B-8FEBDC9C6E37}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT SERVERNAME, IsHCG &#xA;FROM dbo.DBA_ServerInfoFiles&#xA;WHERE STATUS = 1&#xA;"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::FilelistResultset" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Remove Duplicate Records"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F51F56AC-A411-42A7-966F-F0644BC05E3C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Remove Duplicate Records"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BC5785C4-CA60-4B17-883B-8FEBDC9C6E37}"
+          SQLTask:SqlStatementSource="&#xA;DELETE  &#xA;FROM [dbo].[DBA_SpaceTable] &#xA;WHERE NOT EXISTS (SELECT 'X' FROM &#xA;(&#xA; SELECT MAX(SpaceTableID) AS SpaceTableID&#xA;&#x9;FROM [dbo].[DBA_SpaceTable]&#xA;GROUP BY CAST(DateTimeRun as DATE), ServerName, DiskName&#xA;) X &#xA;WHERE [dbo].[DBA_SpaceTable].SpaceTableID = X.SpaceTableID) " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::VarServerName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7638D3F-21C7-4B23-97EC-385F26A6EC08}"
+      DTS:From="Package\Foreach Loop Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Remove Duplicate Records" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{23872308-46D4-478F-A5CF-DCFC3C3BD378}"
+      DTS:From="Package\ReadFileInfo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Foreach Loop Container\Data Transfer"
+          TopLeft="44,107.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Foreach Loop Container\Run Powershell Script"
+          TopLeft="26,5.5" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Foreach Loop Container\Update Server Name on Table"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="116,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="116.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="232,306"
+          Size="232,350"
+          Id="Package\Foreach Loop Container"
+          TopLeft="257.5,117.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\ReadFileInfo"
+          TopLeft="287.5,13.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Remove Duplicate Records"
+          TopLeft="271,509.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="373.5,467.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="356.5,55.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17,62"
+              Start="0,0"
+              End="17,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="4,31" />
+                  <mssgle:LineSegment
+                    End="13,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13,31"
+                    Point2="17,31"
+                    Point3="17,35" />
+                  <mssgle:LineSegment
+                    End="17,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Data Transfer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A"
+          TopLeft="154.5,316.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Foreach Loop Container\Data Transfer\Data Conversion"
+          TopLeft="152,169" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Foreach Loop Container\Data Transfer\Read from Txt file"
+          TopLeft="151.5,94.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Data Transfer\Derived Column"
+          TopLeft="164,240" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Transfer.Paths[Flat File Source Output]"
+          TopLeft="236.5,136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Transfer.Paths[Derived Column Output]"
+          TopLeft="240.5,282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.5"
+              Start="0,0"
+              End="0,27">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Transfer.Paths[Data Conversion Output]"
+          TopLeft="238.75,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Data Transfer\UKDC1-PM-SQS01A">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
